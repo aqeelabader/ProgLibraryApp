@@ -11,6 +11,13 @@ namespace ProgLibraryApp.Controllers
 {
     public static class DictionaryExtensions
     {
+
+        //code attribution
+        //this code for shuffling dictionaries was adapted from the following source:
+        //Author: Jignesh Beladiya
+        //Author profile:https://www.blogger.com/profile/11275105948467239303
+        //url: http://jigneshon.blogspot.com/2013/08/c-snippet-shuffling-dictionary-beginner.html
+        //end of code attribution
         public static Dictionary<TKey, TValue> Shuffle<TKey, TValue>(
            this Dictionary<TKey, TValue> source)
         {
@@ -18,6 +25,7 @@ namespace ProgLibraryApp.Controllers
             return source.OrderBy(x => r.Next())
                .ToDictionary(item => item.Key, item => item.Value);
         }
+        //end of attributed code
     }
     public class HomeController : Controller
     {
@@ -158,9 +166,16 @@ namespace ProgLibraryApp.Controllers
                  {"4 | Groups of people ", 305},
             };
 
+
+            //code attribution
+            //this code for shuffling dictionaries was adapted from the following source:
+            //Author: Jignesh Beladiya
+            //Author profile:https://www.blogger.com/profile/11275105948467239303
+            //url: http://jigneshon.blogspot.com/2013/08/c-snippet-shuffling-dictionary-beginner.html
+            //end of code attribution
             Dictionary<string, int> shuffled = slist1.Shuffle();
             Dictionary<string, int> shuffled2 = slist2.Shuffle();
-
+            //end of attributed code
 
             ViewBag.Slist = shuffled;
             ViewBag.SSlist = shuffled2;
