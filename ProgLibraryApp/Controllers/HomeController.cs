@@ -128,5 +128,19 @@ namespace ProgLibraryApp.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult IdentifyingAreas()
+        {
+
+            var cities = new Dictionary<string, string>()
+            {
+                 {"1 | UK", "A | London, Manchester, Birmingham"},
+                 {"2 | USA", "B | Chicago, New York, Washington"},
+                 {"3 | India", "C | Mumbai, New Delhi, Pune"}
+            };
+
+            ViewBag.Areas = cities;
+            return View();
+        }
     }
 }
