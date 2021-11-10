@@ -150,7 +150,7 @@ namespace ProgLibraryApp.Controllers
 
         public IActionResult IdentifyingAreas()
         {
-
+            //creating dictionaries
             var slist1 = new Dictionary<string, int>()
             {
                  {"3 | Sociology and anthropology  ", 301},
@@ -177,6 +177,8 @@ namespace ProgLibraryApp.Controllers
             Dictionary<string, int> shuffled2 = slist2.Shuffle();
             //end of attributed code
 
+
+            //passing dictionaries to view
             ViewBag.Slist = shuffled;
             ViewBag.SSlist = shuffled2;
 

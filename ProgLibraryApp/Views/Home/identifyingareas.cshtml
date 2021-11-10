@@ -12,6 +12,7 @@
     <br /> 
 <div class="grid-container">
     <div class="grid-item">
+        @*showing columns A and B*@
       <div class="card" style="width: 18rem;align-items: center">
            <h4 style="color: #000000; text-align: center">Column A</h4><br />
              @foreach (var category in ViewBag.Slist)
@@ -29,6 +30,8 @@
                {<div class="item" style="color: #000000"><span>@category.Key</span></div>}
         </div>
     </div>
+            @*showing user input for answers*@
+
     <div class="grid-item">
         <div class="card" style="width: 6rem;align-items: center">
          <h4 style="color: #000000; text-align: center">Answers</h4><br />
@@ -67,7 +70,9 @@
         v5 = $("#value5").val(); 
 
     //end of attributed code
-
+    
+    
+    //checking to make sure answers are correct
         if (v3 == "301" && v1 == "302" && v2 == "303" && v5 == "304" && v4 == "305"){
           $('#ModalPopUp').modal('show');
       }else{$('#ModalPopUp2').modal('show');}
@@ -75,6 +80,8 @@
     })
 </script>
 
+@*modal that shows if its correct
+*@
 <div class="modal fade" id="ModalPopUp" role="dialog">
     <div class="modal-dialog err-pop" style="">
         <div class="modal-content">
@@ -90,6 +97,8 @@
     </div>
 </div>
 
+@*modal that shows if its incorrect
+*@
 <div class="modal fade" id="ModalPopUp2" role="dialog">
     <div class="modal-dialog err-pop" style="">
         <div class="modal-content">
@@ -105,6 +114,9 @@
     </div>
 </div>
 
+
+@*styling of this page
+*@
 
 <style>
     .wrapper .item i {
