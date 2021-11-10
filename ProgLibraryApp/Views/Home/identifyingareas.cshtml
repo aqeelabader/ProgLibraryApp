@@ -16,20 +16,24 @@
     <div class="grid-item">
       <div class="card" style="width: 18rem;align-items: center">
            <h4 style="color: #000000; text-align: center">Column A</h4><br />
-             @foreach (var category in ViewBag.Slist1)
+             @foreach (var category in ViewBag.Slist)
              {<div class="item" style="color: #000000"><span>@category.Key</span></div>}
+             @foreach (var category in ViewBag.SSlist)
+             {<div class="item" style="color: #000000"><span>@category.Value</span></div>}
         </div>
     </div>
     <div class="grid-item">
         <div class="card" style="width: 18rem;align-items: center">
             <h4 style="color: #000000; text-align: center">Column B</h4><br />
-            @foreach (var category in ViewBag.Slist1)
+               @foreach (var category in ViewBag.Slist)
                {<div class="item" style="color: #000000"><span>@category.Value</span></div>}
+               @foreach (var category in ViewBag.SSlist)
+               {<div class="item" style="color: #000000"><span>@category.Key</span></div>}
         </div>
     </div>
     <div class="grid-item">
         <div class="card" style="width: 6rem;align-items: center">
-         <h4 style="color: #000000; text-align: center">answers</h4><br />
+         <h4 style="color: #000000; text-align: center">Answers</h4><br />
           <div class="item2"><span><label for="value1">1 : </label>
           <input id="value1" name="value1" type="text" value="" style="text-color: #ffffff; width: 2rem" /></span></div>        
           <div class="item2"><span><label for="value2">2 : </label>
@@ -58,11 +62,15 @@
     //url: https://www.w3schools.com/jquery/jquery_selectors.asp
     //end of code attribution
 
-        value = $("#value1").val(); 
+        v1 = $("#value1").val(); 
+        v2 = $("#value2").val(); 
+        v3 = $("#value3").val(); 
+        v4 = $("#value4").val(); 
+        v5 = $("#value5").val(); 
 
-        if (value == "A"){
+        if (v3 == "301" && v1 == "302" && v2 == "303" && v5 == "304" && v4 == "305"){
           $('#ModalPopUp').modal('show');
-      }
+      }else{$('#ModalPopUp2').modal('show');}
 
     })
 </script>
@@ -77,8 +85,23 @@
                 <button id="DivClose" type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body" style="text-align:center;">
-                <h2>Congrats, youve made it through the first level!, click continue to proceed to the next level!</h2>
+                <h2>Congrats, you got it all correct, click continue to proceed to the question </h2>
                 <input class="btn-success" id="Button1" type="button" value="Continue" onclick="window.location.reload();"/>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalPopUp2" role="dialog">
+    <div class="modal-dialog err-pop" style="">
+        <div class="modal-content">
+            <div class="modal-header">
+               
+            </div>
+            <div class="modal-body" style="text-align:center;">
+                <h2>You made a Mistake, Go back and correct it</h2>
+                <button id="DivClose" type="button" class="btn-warning" data-dismiss="modal">&times;</button>
                 
             </div>
         </div>

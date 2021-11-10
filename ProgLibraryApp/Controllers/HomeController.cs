@@ -9,6 +9,16 @@ using System.Threading.Tasks;
 
 namespace ProgLibraryApp.Controllers
 {
+    public static class DictionaryExtensions
+    {
+        public static Dictionary<TKey, TValue> Shuffle<TKey, TValue>(
+           this Dictionary<TKey, TValue> source)
+        {
+            Random r = new Random();
+            return source.OrderBy(x => r.Next())
+               .ToDictionary(item => item.Key, item => item.Value);
+        }
+    }
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -129,41 +139,66 @@ namespace ProgLibraryApp.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+
         public IActionResult IdentifyingAreas()
         {
 
-            var slist1 = new Dictionary<string, string>()
+            //var slist1 = new Dictionary<string, string>()
+            //{
+            //     {"1 | 020 ", "A | Library and information sciences"},
+            //     {"2 | 027 ", "B | General libraries"},
+            //     {"3 | 034 ", "C | Encyclopedias in French, Occitan, and Catalan"},
+            //     {"4 | Serials in other Germanic languages ", "D | 053"},
+            //     {"5 | Serials in Slavic languages ", "E | 057"},
+            //     {".", "F | 042"},
+            //     {"..", "G | Encyclopedias in Occitan"}
+            //};
+            //var slist3 = new Dictionary<string, string>()
+            //{
+            //     {"1 | 060  ", "A | General organizations and museum science"},
+            //     {"2 | 064  ", "B | Organizations in France and Monaco"},
+            //     {"3 | 068  ", "C | Organizations in other geographic areas"},
+            //     {"4 | Organizations in Iberian peninsula and adjacent islands ", "D | 066"},
+            //     {"5 | Museum science ", "E | 069"},
+            //     {".", "F | 057"},
+            //     {"..", "G |  Newspapers in France and Monaco"}
+            //};
+            //var slist4 = new Dictionary<string, string>()
+            //{
+            //     {"1 | 097 ", "A | Books notable for ownership or origin"},
+            //     {"2 | 094 ", "B | Printed books"},
+            //     {"3 | 091 ", "C | Manuscripts"},
+            //     {"4 | Manuscripts and rare books ", "D | 090"},
+            //     {"5 | Books notable for illustrations ", "E | 096"},
+            //     {".", "F | 098 "},
+            //     {"..", "G | Books notable for format"}
+            //};
+
+
+
+
+            var slist1 = new Dictionary<string, int>()
             {
-                 {"1 | 020 ", "A | Library and information sciences"},
-                 {"2 | 027 ", "B | General libraries"},
-                 {"3 | 034 ", "C | Encyclopedias in French, Occitan, and Catalan"},
-                 {"4 | Serials in other Germanic languages ", "D | 053"},
-                 {"5 | Serials in Slavic languages ", "E | 057"},
-                 {".", "F | 042"},
-                 {"..", "G | Encyclopedias in Occitan"}
-            };
-            var slist2 = new Dictionary<string, string>()
-            {
-                 {"1 | 060  ", "A | General organizations and museum science"},
-                 {"2 | 064  ", "B | Organizations in France and Monaco"},
-                 {"3 | 068  ", "C | Organizations in other geographic areas"},
-                 {"4 | Organizations in Iberian peninsula and adjacent islands ", "D | 066"},
-                 {"5 | Museum science ", "E | 069"},
-                 {".", "F | 057"},
-                 {"..", "G |  Newspapers in France and Monaco"}
-            };
-            var slist3 = new Dictionary<string, string>()
-            {
-                 {"1 | 097 ", "A | Books notable for ownership or origin"},
-                 {"2 | 094 ", "B | Printed books"},
-                 {"3 | 091 ", "C | Manuscripts"},
-                 {"4 | Manuscripts and rare books ", "D | 090"},
-                 {"5 | Books notable for illustrations ", "E | 096"},
-                 {".", "F | 098 "},
-                 {"..", "G | Books notable for format"}
+                 {"3 | Sociology and anthropology  ", 301},
+                 {"1 | Social interaction  ", 302},
+                 {"2 | Social processes  ", 303},
+                 {".", 308},
+                 {"..", 309}
             };
 
-            ViewBag.Slist1 = slist1;
+            var slist2 = new Dictionary<string, int>()
+            {
+                 {"5 | Factors affecting social behavior ", 304},
+                 {"4 | Groups of people ", 305},
+            };
+
+            Dictionary<string, int> shuffled = slist1.Shuffle();
+            Dictionary<string, int> shuffled2 = slist2.Shuffle();
+
+
+            ViewBag.Slist = shuffled;
+            ViewBag.SSlist = shuffled2;
+
             return View();
         }
     }
