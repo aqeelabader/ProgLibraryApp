@@ -16,44 +16,48 @@
     <div class="grid-item">
       <div class="card" style="width: 18rem;align-items: center">
            <h4 style="color: #000000; text-align: center">Column A</h4><br />
-             @foreach (var area in ViewBag.Areas)
-             {<div class="item"><span>@area.Key</span></div>}
+             @foreach (var category in ViewBag.Slist1)
+             {<div class="item" style="color: #000000"><span>@category.Key</span></div>}
         </div>
     </div>
     <div class="grid-item">
         <div class="card" style="width: 18rem;align-items: center">
             <h4 style="color: #000000; text-align: center">Column B</h4><br />
-            @foreach (var area in ViewBag.Areas)
-               {<div class="item"><span>@area.Value</span></div>}
+            @foreach (var category in ViewBag.Slist1)
+               {<div class="item" style="color: #000000"><span>@category.Value</span></div>}
         </div>
+    </div>
+    <div class="grid-item">
+        <div class="card" style="width: 6rem;align-items: center">
+         <h4 style="color: #000000; text-align: center">answers</h4><br />
+          <div class="item2"><span><label for="value1">1 : </label>
+          <input id="value1" name="value1" type="text" value="" style="text-color: #ffffff; width: 2rem" /></span></div>        
+          <div class="item2"><span><label for="value2">2 : </label>
+          <input id="value2" name="value2" type="text" value="" style="text-color: #ffffff; width: 2rem" /></span></div>        
+          <div class="item2"><span><label for="value3">3 : </label>
+          <input id="value3" name="value3" type="text" value="" style="text-color: #ffffff; width: 2rem" /></span></div>       
+          <div class="item2"><span><label for="value4">4 : </label>
+          <input id="value4" name="value4" type="text" value="" style="text-color: #ffffff; width: 2rem" /></span></div>
+          <div class="item2"><span><label for="value5">5 : </label>
+          <input id="value5" name="value5" type="text" value="" style="text-color: #ffffff; width: 2rem" /></span></div>
+          </div>
+          <br />
+          <button type="button" name="btnLink" id="btnLink" class="btn-success">Check</button>
     </div>
 </div>
 </div>
 
-<div class="card" style="width: 6rem;align-items: center">
-   <h4 style="color: #000000; text-align: center">answers</h4><br />
 
-   <div class="item"><span><label for="value1">1 : </label>
-            <input id="value1" name="value1" type="text" value="" style="text-color: #ffffff; width: 2rem" /></span></div>
-            
-    <div class="item"><span><label for="value2">2 : </label>
-            <input id="value2" name="value2" type="text" value="" style="text-color: #ffffff; width: 2rem" /></span></div>
-            
-      <div class="item"><span><label for="value3">3 : </label>
-            <input id="value3" name="value3" type="text" value="" style="text-color: #ffffff; width: 2rem" /></span></div>
-            
-   <div class="item"><span><label for="value4">4 : </label>
-            <input id="value4" name="value4" type="text" value="" style="text-color: #ffffff; width: 2rem" /></span></div>
-
-    <div class="item"><span><label for="value5">5 : </label>
-            <input id="value5" name="value5" type="text" value="" style="text-color: #ffffff; width: 2rem" /></span></div>
-</div>
-
-<button type="button" name="btnLink" id="btnLink" class="btn-success">Check</button>
 
 <script>
     $("#btnLink").click(function () {
       
+    //code attribution
+    //this code for using jquery selectors was adapted from the following source:
+    //Author: W3schools
+    //url: https://www.w3schools.com/jquery/jquery_selectors.asp
+    //end of code attribution
+
         value = $("#value1").val(); 
 
         if (value == "A"){
@@ -63,8 +67,35 @@
     })
 </script>
 
+
+
+
+<div class="modal fade" id="ModalPopUp" role="dialog">
+    <div class="modal-dialog err-pop" style="">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="DivClose" type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align:center;">
+                <h2>Congrats, youve made it through the first level!, click continue to proceed to the next level!</h2>
+                <input class="btn-success" id="Button1" type="button" value="Continue" onclick="window.location.reload();"/>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 <style>
     .wrapper .item i {
+        font-size: 18px;
+        cursor: pointer;
+    }
+    .wrapper .item2 i {
         font-size: 18px;
         cursor: pointer;
     }
@@ -88,6 +119,16 @@
         justify-content: space-between;
         width: 16rem;
     }
+    .wrapper .item2 {
+        color: #fff;
+        display: flex;
+        margin-bottom: 8px;
+        padding: 12px 17px;
+        background: #bfbfbf;
+        border-radius: 3px;
+        align-items: center;
+        justify-content: space-between;
+    }
     .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
@@ -101,17 +142,3 @@
 
 
 
-<div class="modal fade" id="ModalPopUp" role="dialog">
-    <div class="modal-dialog err-pop" style="">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button id="DivClose" type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body" style="text-align:center;">
-                <h2>Congrats, youve made it through the first level!, click continue to proceed to the next level!</h2>
-                <input class="btn-success" id="Button1" type="button" value="Continue" onclick="window.location.reload();"/>
-                
-            </div>
-        </div>
-    </div>
-    </div>

@@ -132,14 +132,38 @@ namespace ProgLibraryApp.Controllers
         public IActionResult IdentifyingAreas()
         {
 
-            var cities = new Dictionary<string, string>()
+            var slist1 = new Dictionary<string, string>()
             {
-                 {"1 | UK", "A | London, Manchester, Birmingham"},
-                 {"2 | USA", "B | Chicago, New York, Washington"},
-                 {"3 | India", "C | Mumbai, New Delhi, Pune"}
+                 {"1 | 020 ", "A | Library and information sciences"},
+                 {"2 | 027 ", "B | General libraries"},
+                 {"3 | 034 ", "C | Encyclopedias in French, Occitan, and Catalan"},
+                 {"4 | Serials in other Germanic languages ", "D | 053"},
+                 {"5 | Serials in Slavic languages ", "E | 057"},
+                 {".", "F | 042"},
+                 {"..", "G | Encyclopedias in Occitan"}
+            };
+            var slist2 = new Dictionary<string, string>()
+            {
+                 {"1 | 060  ", "A | General organizations and museum science"},
+                 {"2 | 064  ", "B | Organizations in France and Monaco"},
+                 {"3 | 068  ", "C | Organizations in other geographic areas"},
+                 {"4 | Organizations in Iberian peninsula and adjacent islands ", "D | 066"},
+                 {"5 | Museum science ", "E | 069"},
+                 {".", "F | 057"},
+                 {"..", "G |  Newspapers in France and Monaco"}
+            };
+            var slist3 = new Dictionary<string, string>()
+            {
+                 {"1 | 097 ", "A | Books notable for ownership or origin"},
+                 {"2 | 094 ", "B | Printed books"},
+                 {"3 | 091 ", "C | Manuscripts"},
+                 {"4 | Manuscripts and rare books ", "D | 090"},
+                 {"5 | Books notable for illustrations ", "E | 096"},
+                 {".", "F | 098 "},
+                 {"..", "G | Books notable for format"}
             };
 
-            ViewBag.Areas = cities;
+            ViewBag.Slist1 = slist1;
             return View();
         }
     }
