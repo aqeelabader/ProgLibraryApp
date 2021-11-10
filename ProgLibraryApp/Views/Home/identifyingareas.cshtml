@@ -30,8 +30,38 @@
 </div>
 </div>
 
+<div class="card" style="width: 6rem;align-items: center">
+   <h4 style="color: #000000; text-align: center">answers</h4><br />
 
+   <div class="item"><span><label for="value1">1 : </label>
+            <input id="value1" name="value1" type="text" value="" style="text-color: #ffffff; width: 2rem" /></span></div>
+            
+    <div class="item"><span><label for="value2">2 : </label>
+            <input id="value2" name="value2" type="text" value="" style="text-color: #ffffff; width: 2rem" /></span></div>
+            
+      <div class="item"><span><label for="value3">3 : </label>
+            <input id="value3" name="value3" type="text" value="" style="text-color: #ffffff; width: 2rem" /></span></div>
+            
+   <div class="item"><span><label for="value4">4 : </label>
+            <input id="value4" name="value4" type="text" value="" style="text-color: #ffffff; width: 2rem" /></span></div>
 
+    <div class="item"><span><label for="value5">5 : </label>
+            <input id="value5" name="value5" type="text" value="" style="text-color: #ffffff; width: 2rem" /></span></div>
+</div>
+
+<button type="button" name="btnLink" id="btnLink" class="btn-success">Check</button>
+
+<script>
+    $("#btnLink").click(function () {
+      
+        value = $("#value1").val(); 
+
+        if (value == "A"){
+          $('#ModalPopUp').modal('show');
+      }
+
+    })
+</script>
 
 <style>
     .wrapper .item i {
