@@ -151,20 +151,120 @@ namespace ProgLibraryApp.Controllers
         public IActionResult findingcallnumbers() 
         {
 
+            //code attribution
+            //this code for the following tree structure was adapted from the following source:
+            //Author: Marcus Mangelsdorf
+            //Author profile: https://stackoverflow.com/users/2822719/marcus-mangelsdorf
+            //url: https://stackoverflow.com/questions/9860207/build-a-simple-high-performance-tree-data-structure-in-c-sharp
+            //end of code attribution
+
+            //Filling nodes temporarily
+
             var sciencestree = new TreeNode("Root")
             {
-                new TreeNode("320 Political science"),              
-                new TreeNode("330 Economics"),
-                new TreeNode("340 Law")
+                new TreeNode(" A |320 Political science"),              
+                new TreeNode(" B |330 Economics"),
+                new TreeNode(" C |340 Law")
 
             };
 
+            var insciencestree = new TreeNode("Root")
+            {
+                new TreeNode(" A |321 Systems of governments & states"),
+                new TreeNode(" B |322 Relation of state to organized groups"),
+                new TreeNode(" C |323 Civil & political rights"),
+                new TreeNode(" D |324 The political process"),
+                new TreeNode(" E |325 International migration & colonization"),
+                new TreeNode(" F |326 Slavery & emancipation"),
+                new TreeNode(" G |327 International relations"),
+                new TreeNode(" H |328 The legislative process"),
+                new TreeNode(" I |329 Not assigned or no longer used")
 
+            };
+
+            var nsmath = new TreeNode("Root")
+            {
+                new TreeNode(" A |520 Astronomy & allied sciences"),
+                new TreeNode(" B |540 Chemistry & allied sciences"),
+                new TreeNode(" C |580 Botanical sciences")
+            };
+
+            var innsmath = new TreeNode("Root")
+            {
+                new TreeNode(" A |521 Celestial mechanics"),
+                new TreeNode(" B |522 Techniques, equipment, materials"),
+                new TreeNode(" C |523 Specific celestial bodies & phenomena"),
+                new TreeNode(" D |524 Not assigned or no longer used"),
+                new TreeNode(" E |525 Earth (Astronomical geography)"),
+                new TreeNode(" F |526 Mathematical geography"),
+                new TreeNode(" G |527 Celestial navigation"),
+                new TreeNode(" H |528 Ephemerides"),
+                new TreeNode(" I |529 Chronology")
+
+            };
+
+            var arts = new TreeNode("Root")
+            {
+                new TreeNode(" A |710 Civic & landscape art"),
+                new TreeNode(" B |720 Architecture"),
+                new TreeNode(" C |750 Painting & paintings")
+            };
+
+            var inarts = new TreeNode("Root")
+            {
+                new TreeNode(" A |711 Area planning (Civic art)"),
+                new TreeNode(" B |712 Landscape architecture"),
+                new TreeNode(" C |713 Landscape architecture of trafficways"),
+                new TreeNode(" D |714 Water features"),
+                new TreeNode(" E |715 Woody plants"),
+                new TreeNode(" F |716 Herbaceous plants"),
+                new TreeNode(" G |717 Structures"),
+                new TreeNode(" H |718 Landscape design of cemeteries"),
+                new TreeNode(" I |719 Natural landscapes")
+
+            };
+
+            var lit = new TreeNode("Root")
+            {
+                new TreeNode(" A |810 American literature in English"),
+                new TreeNode(" B |820 English & Old English literatures"),
+                new TreeNode(" C |830 Literatures of Germanic languages")
+            };
+
+            var inlit = new TreeNode("Root")
+            {
+                new TreeNode(" A |811 Poetry"),
+                new TreeNode(" B |812 Drama"),
+                new TreeNode(" C |813 Fiction"),
+                new TreeNode(" D |814 Essays"),
+                new TreeNode(" E |815 Speeches"),
+                new TreeNode(" F |816 Letters"),
+                new TreeNode(" G |817 Satire & humour"),
+                new TreeNode(" H |818 Miscellaneous writings"),
+                new TreeNode(" I |819 Not used")
+
+            };
+
+            //passing children to view 
+            ViewBag.lit = lit.children.ToList();
+            ViewBag.inlit = inlit.children.ToList();
+            ViewBag.arts = arts.children.ToList();
+            ViewBag.inarts = inarts.children.ToList();
+            ViewBag.nsmath = nsmath.children.ToList();
+            ViewBag.innsmath = innsmath.children.ToList();
             ViewBag.sciencestree = sciencestree.children.ToList();
+            ViewBag.insciencestree = insciencestree.children.ToList();
+
             return View();      
         
         }
         //Creating structure of tree
+        //code attribution
+        //this code for the following tree structure was adapted from the following source:
+        //Author: Marcus Mangelsdorf
+        //Author profile: https://stackoverflow.com/users/2822719/marcus-mangelsdorf
+        //url: https://stackoverflow.com/questions/9860207/build-a-simple-high-performance-tree-data-structure-in-c-sharp
+        //end of code attribution
         public class TreeNode : IEnumerable<TreeNode>
         {
             public readonly Dictionary<string, TreeNode> children = new Dictionary<string, TreeNode>();
