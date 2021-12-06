@@ -1,0 +1,131 @@
+﻿@{
+    ViewData["Title"] = "Finding Call Numbers";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.2/Sortable.min.js"></script>
+
+<div class="text-center text-light">
+    <h2 class="display-4">Finding call numbers</h2>
+</div>
+
+<div class="wrapper">
+ <br /> 
+   <div class="grid-container">
+        <div class="grid-item" name="card1" id="card1">
+        @*showing columns A and B*@
+            <div class="card" style="width: 18rem;align-items: center">
+              <h4 style="color: #000000; text-align: center">Pick a category</h4><br />
+                 {<div class="item" style="color: #000000"><button type="button" name="btnLink" id="btnLink" >Social sciences</button><br /></div>}
+                 {<div class="item" style="color: #000000"><button type="button" name="btnLink1" id="btnLink1" >Natural sciences & mathematics</button><br /></div>}
+                 {<div class="item" style="color: #000000"><button type="button" name="btnLink2" id="btnLink2" >The arts</button><br /></div>}
+                 {<div class="item" style="color: #000000"><button type="button" name="btnLink3" id="btnLink3" >Literature & rhetoric</button><br /></div>}
+             </div>
+         </div>
+          <div class="grid-item">
+            <div class="card" style="width: 18rem;align-items: center">
+              <h4 style="color: #000000; text-align: center">select the correct sub category</h4><br />
+               @foreach (var science in ViewBag.sciencestree)
+               {<div class="item" style="color: #000000"><span>@science.Key</span></div>}
+               <br />
+               <br />
+               <p>chosen category</p>
+                <div class="item2"><span><label for="value1">1 : </label>
+                    <input id="value1" name="value1" type="text" value="" style="text-color: #ffffff; width: 2rem" /></span></div>
+             </div>
+             
+          </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+    $("#btnLink").click(function () {
+        //functions of the buttons
+         $("#card1").hide();   
+         
+
+    })
+
+     $("#btnLink1").click(function () {
+        //functions of the buttons
+         $("#card1").hide();    
+
+
+    })
+
+     $("#btnLink2").click(function () {
+        //functions of the buttons
+         $("#card1").hide();    
+
+
+    })
+
+     $("#btnLink3").click(function () {
+        //functions of the buttons
+         $("#card1").hide();    
+
+
+    })
+</script>
+
+
+
+
+
+
+
+
+
+<style>
+    .wrapper .item i {
+        font-size: 18px;
+        cursor: pointer;
+    }
+    .wrapper .item2 i {
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .wrapper {
+        color: white;
+    }
+
+    .checkwrap {
+        visibility: hidden;
+    }
+
+    .wrapper .item {
+        color: #fff;
+        display: flex;
+        margin-bottom: 8px;
+        padding: 12px 17px;
+        background: #bfbfbf;
+        border-radius: 3px;
+        align-items: center;
+        justify-content: space-between;
+        width: 16rem;
+    }
+    .wrapper .item2 {
+        color: #fff;
+        display: flex;
+        margin-bottom: 8px;
+        padding: 12px 17px;
+        background: #bfbfbf;
+        border-radius: 3px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    }
+    .grid-item {
+    padding: 20px;
+    }
+    
+</style>

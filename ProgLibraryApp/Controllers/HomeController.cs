@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using ProgLibraryApp.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -146,6 +147,68 @@ namespace ProgLibraryApp.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult findingcallnumbers() 
+        {
+
+            var sciencestree = new TreeNode("Root")
+            {
+                new TreeNode("320 Political science"),              
+                new TreeNode("330 Economics"),
+                new TreeNode("340 Law")
+
+            };
+
+
+            ViewBag.sciencestree = sciencestree.children.ToList();
+            return View();      
+        
+        }
+        //Creating structure of tree
+        public class TreeNode : IEnumerable<TreeNode>
+        {
+            public readonly Dictionary<string, TreeNode> children = new Dictionary<string, TreeNode>();
+
+            public readonly string Id;
+            public TreeNode Parent { get; set; }
+
+            public TreeNode(string id)
+            {
+                this.Id = id;
+            }
+
+            public TreeNode GetChild(string id)
+            {
+                return this.children[id];
+            }
+
+            public void Add(TreeNode item)
+            {
+                if (item.Parent != null)
+                {
+                    item.Parent.children.Remove(item.Id);
+                }
+
+                item.Parent = this;
+                this.children.Add(item.Id, item);
+            }
+
+            public IEnumerator<TreeNode> GetEnumerator()
+            {
+                return this.children.Values.GetEnumerator();
+            }
+
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                return (IEnumerator)GetEnumerator();
+            }
+
+            public int Count
+            {
+                get { return this.children.Count; }
+            }
+        }
+        //end tree structure
 
 
         public IActionResult IdentifyingAreas()

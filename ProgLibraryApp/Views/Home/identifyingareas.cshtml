@@ -15,7 +15,7 @@
         @*showing columns A and B*@
       <div class="card" style="width: 18rem;align-items: center">
            <h4 style="color: #000000; text-align: center">Column A</h4><br />
-             @foreach (var category in ViewBag.Slist)
+              @foreach (var category in ViewBag.Slist)
              {<div class="item" style="color: #000000"><span>@category.Key</span></div>}
              @foreach (var category in ViewBag.SSlist)
              {<div class="item" style="color: #000000"><span>@category.Value</span></div>}
